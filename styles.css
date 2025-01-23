@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+header {
+    display: flex;
+    background-color: lightblue;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: white;
+}
+
+header img {
+    border-radius: 80%;
+    width: 5vw;
+}
+
+
+.container {
+    background-color: grey;
+    height: 100%;
+}
