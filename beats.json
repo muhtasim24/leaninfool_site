@@ -1,6 +1,6 @@
 [
     {
-        "title": "Beat 1",
+        "title": "Leaninfool Beat 1",
         "tag": "#wavy #melodic",
         "audio": "/audio/beat1.mp3",
         "img": "/images/beat1.jpg"
@@ -28,5 +28,11 @@
         "tag": "Trap",
         "audio": "/audio/beat2.mp3",
         "img": "/images/beat2.jpg"
+    },
+    {
+        "title": "Leaninfool Beat 6",
+        "tag": "#wavy #melodic",
+        "audio": "/audio/beat1.mp3",
+        "img": "/images/beat1.jpg"
     }
 ]

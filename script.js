@@ -3,27 +3,34 @@ fetch('beats.json')
     .then(response => response.json()) // Parse JSON
     .then(data => {
         const beatsContainer = document.querySelector('.beats'); // Get the beats container
-        
+
         // Loop through the data and create elements dynamically
         data.forEach((beat) => {
             const beatBox = document.createElement('div'); // Create a new div for each beat
             beatBox.classList.add('beat-box'); // Add a class for styling
-            
+
+            // Create the play button
+            const playButton = document.createElement('button');
+            playButton.classList.add('play-button');
+
+            // Create a container for title and tag
+            const beatDetails = document.createElement('div');
+            beatDetails.classList.add('beat-details');
+
             // Create title and description for each beat
             const beatTitle = document.createElement('h2');
             beatTitle.textContent = beat.title; // Set the title
 
             const beatTag = document.createElement('p');
             beatTag.textContent = beat.tag; // Set the description
-            
-            const playButton = document.createElement('button');
-            playButton.textContent='Play';
-            playButton.classList.add('play-button')
 
-            // Append the title and description to the beatBox
-            beatBox.appendChild(beatTitle);
-            beatBox.appendChild(beatTag);
+            // Append title and tag to the details container
+            beatDetails.appendChild(beatTitle);
+            beatDetails.appendChild(beatTag);
+
+            // Append the play button and details to the beatBox
             beatBox.appendChild(playButton);
+            beatBox.appendChild(beatDetails);
 
             // Append the beatBox to the beats container
             beatsContainer.appendChild(beatBox);
