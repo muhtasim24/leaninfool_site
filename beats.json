@@ -10,5 +10,11 @@
         "tag": "Trap",
         "audio": "/audio/beat2.mp3",
         "img": "/images/beat2.jpg"
+    },
+    {
+        "title": "Beat 3",
+        "tag": "Trap",
+        "audio": "/audio/beat2.mp3",
+        "img": "/images/beat2.jpg"
     }
 ]
