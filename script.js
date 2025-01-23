@@ -15,11 +15,15 @@ fetch('beats.json')
 
             const beatTag = document.createElement('p');
             beatTag.textContent = beat.tag; // Set the description
-
+            
+            const playButton = document.createElement('button');
+            playButton.textContent='Play';
+            playButton.classList.add('play-button')
 
             // Append the title and description to the beatBox
             beatBox.appendChild(beatTitle);
             beatBox.appendChild(beatTag);
+            beatBox.appendChild(playButton);
 
             // Append the beatBox to the beats container
             beatsContainer.appendChild(beatBox);
