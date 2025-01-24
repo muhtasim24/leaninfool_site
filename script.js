@@ -3,6 +3,11 @@ fetch('beats.json')
     .then(response => response.json()) // Parse JSON
     .then(data => {
         const beatsContainer = document.querySelector('.beats'); // Get the beats container
+        const modal = document.querySelector('dialog'); // Select the <dialog> element
+        const modalTitle = document.getElementById('modal-title'); // Modal title
+        const modalImg = document.getElementById('modal-img');
+        const modalAudio = document.getElementById('modal-audio'); // Modal audio
+        const closeModal = document.getElementById('close-modal'); // Close button 
 
         // Loop through the data and create elements dynamically
         data.forEach((beat) => {
@@ -31,9 +36,28 @@ fetch('beats.json')
             // Append the play button and details to the beatBox
             beatBox.appendChild(playButton);
             beatBox.appendChild(beatDetails);
+            
+            beatBox.addEventListener('click', () => {
+                modalTitle.textContent = beat.title; // Set modal title
+                modalImg.src = beat.img;
+                modalAudio.src = beat.audio; // Set modal audio (ensure your JSON contains the audio URL)
+                modal.showModal(); // Open the dialog
+            });
 
             // Append the beatBox to the beats container
             beatsContainer.appendChild(beatBox);
+        });
+
+        // Close modal on button click
+        closeModal.addEventListener('click', () => {
+            modal.close(); // Close the dialog
+        });
+
+        // Close modal when clicking outside of it
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.close();
+            }
         });
     })
     .catch(error => console.error('Error loading the JSON data:', error));
