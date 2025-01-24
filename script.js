@@ -61,3 +61,9 @@ fetch('beats.json')
         });
     })
     .catch(error => console.error('Error loading the JSON data:', error));
+
+
+// function to handle all audio controls
+function audioControls() {
+
+}
