@@ -51,6 +51,7 @@ header img {
     border: none;
     font-size: 2rem;
     cursor: pointer;
+    color: black;
 }
 
 .container {
@@ -188,6 +189,7 @@ dialog {
     border: none;
     font-size: 2rem;
     cursor: pointer;
+    color: black;
 }
 
 /* Blur the background when modal is open */
