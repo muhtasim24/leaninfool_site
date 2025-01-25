@@ -63,10 +63,6 @@ fetch('beats.json')
 
 // function to handle all audio controls
 function modalControls(data, beat) {
-    console.log(data);
-    console.log(beat);
-    console.log(data.length);
-    console.log(beat.audio);
     const modalTitle = document.getElementById('modal-title'); // Modal title
     const modalImg = document.getElementById('modal-img');
     const playBtn = document.querySelector('#play');
