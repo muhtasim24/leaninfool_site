@@ -1,3 +1,25 @@
+const contactBtn = document.getElementById('contact');
+const contactModal = document.getElementById('contact-modal');
+const closeContact = document.getElementById('close-contact-modal');
+
+contactBtn.addEventListener('click', () => {
+    contactModal.showModal();
+})
+
+// Close modal on button click
+closeContact.addEventListener('click', () => {
+    contactModal.close(); // Close the dialog
+});
+
+// Close modal when clicking outside of it
+contactModal.addEventListener('click', (event) => {
+    if (event.target === contactModal) {
+        contactModal.close();
+    }
+});
+
+
+
 // Fetch the JSON data
 fetch('beats.json')
     .then(response => response.json()) // Parse JSON
@@ -47,12 +69,14 @@ fetch('beats.json')
         // Close modal on button click
         closeModal.addEventListener('click', () => {
             modal.close(); // Close the dialog
+            audio.pause();
         });
 
         // Close modal when clicking outside of it
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
                 modal.close();
+                audio.pause();
             }
         });
 
@@ -80,6 +104,7 @@ function modalControls(data, beat) {
         audio.src = beat.audio;
         modalTitle.textContent = beat.title; // Set modal title
         modalImg.src = beat.img;
+        playBeat();
     }
 
 
