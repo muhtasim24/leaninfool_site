@@ -206,7 +206,7 @@ dialog[open] ~ body::before {
 }
 
 .progress-container {
-    background: white;
+    background: black;
     border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;

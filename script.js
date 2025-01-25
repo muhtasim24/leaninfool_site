@@ -4,8 +4,6 @@ fetch('beats.json')
     .then(data => {
         const beatsContainer = document.querySelector('.beats'); // Get the beats container
         const modal = document.querySelector('dialog'); // Select the <dialog> element
-        const modalTitle = document.getElementById('modal-title'); // Modal title
-        const modalImg = document.getElementById('modal-img');
         const modalAudio = document.getElementById('modal-audio'); // Modal audio
         const closeModal = document.getElementById('close-modal'); // Close button 
 
@@ -38,9 +36,7 @@ fetch('beats.json')
             beatBox.appendChild(beatDetails);
             
             beatBox.addEventListener('click', () => {
-                modalTitle.textContent = beat.title; // Set modal title
-                modalImg.src = beat.img;
-                audioControls(data, beat);
+                modalControls(data, beat);
                 modal.showModal(); // Open the dialog
             });
 
@@ -66,10 +62,13 @@ fetch('beats.json')
 
 
 // function to handle all audio controls
-function audioControls(data, beat) {
+function modalControls(data, beat) {
     console.log(data);
     console.log(beat);
+    console.log(data.length);
     console.log(beat.audio);
+    const modalTitle = document.getElementById('modal-title'); // Modal title
+    const modalImg = document.getElementById('modal-img');
     const playBtn = document.querySelector('#play');
     const prevBtn = document.querySelector('#prev');
     const nextBtn = document.querySelector('#next');
@@ -77,11 +76,18 @@ function audioControls(data, beat) {
     const progress = document.querySelector('.progress');
     const progressContainer = document.querySelector('progress-container');
     let isPlaying = false;
+    let currentBeatIndex = beat.index;
 
-    audio.src = beat.audio;
+    loadBeat(beat);
+
+    function loadBeat(beat){
+        audio.src = beat.audio;
+        modalTitle.textContent = beat.title; // Set modal title
+        modalImg.src = beat.img;
+    }
 
 
-    function playSong() {
+    function playBeat() {
         isPlaying = true;
         playBtn.querySelector('i.fa-solid').classList.remove('fa-circle-play');
         playBtn.querySelector('i.fa-solid').classList.add('fa-circle-pause');
@@ -89,7 +95,7 @@ function audioControls(data, beat) {
         audio.play();
     }
     
-    function pauseSong() {
+    function pauseBeat() {
         isPlaying = false;
         playBtn.querySelector('i.fa-solid').classList.add('fa-circle-play');
         playBtn.querySelector('i.fa-solid').classList.remove('fa-circle-pause');
@@ -97,14 +103,46 @@ function audioControls(data, beat) {
         audio.pause();
     }
 
+    function prevBeat() {
+        currentBeatIndex--;
+        
+        // if we are at first song, and go back, set it to last song
+        if (currentBeatIndex < 0) {
+            currentBeatIndex = data.length - 1;
+        }
+
+        loadBeat(data[currentBeatIndex])
+
+        playBeat();
+    }
+
+    function nextBeat() {
+        currentBeatIndex++;
+
+        if (currentBeatIndex > data.length - 1){
+            currentBeatIndex = 0
+        }
+
+        loadBeat(data[currentBeatIndex])
+        playBeat();
+    }
+    
+    function updateProgress(e) {
+        console.log(e.srcElement.currentTime);
+    }
 
     playBtn.addEventListener('click', () => {
         // if song is playing, pause it
         if (isPlaying){
-            pauseSong();
+            pauseBeat();
         } else {
-            playSong();
+            playBeat();
         }
     })
+
+    prevBtn.addEventListener('click', prevBeat);
+    nextBtn.addEventListener('click', nextBeat);
+
+    audio.addEventListener('timeupdate', updateProgress);
 }
 
