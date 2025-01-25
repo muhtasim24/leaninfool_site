@@ -179,3 +179,45 @@ dialog[open] ~ body::before {
     opacity: 1;
     pointer-events: auto; /* Allow interaction for the modal */
 }
+
+/* ALL audio controls stlying */
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.action-btn {
+    background-color: #fff;
+    border: 0;
+    font-size: 20px;
+    cursor: pointer;
+    padding:10px; 
+    margin: 0 20px;
+}
+
+.action-btn-big {
+    font-size: 30px;
+}
+
+.action-btn:focus {
+    outline: 0;
+}
+
+.progress-container {
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 100%;
+}
+
+.progress{
+    background-color: black;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}

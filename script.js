@@ -40,7 +40,7 @@ fetch('beats.json')
             beatBox.addEventListener('click', () => {
                 modalTitle.textContent = beat.title; // Set modal title
                 modalImg.src = beat.img;
-                modalAudio.src = beat.audio; // Set modal audio (ensure your JSON contains the audio URL)
+                audioControls(data, beat);
                 modal.showModal(); // Open the dialog
             });
 
@@ -59,11 +59,52 @@ fetch('beats.json')
                 modal.close();
             }
         });
+
+        
     })
     .catch(error => console.error('Error loading the JSON data:', error));
 
 
 // function to handle all audio controls
-function audioControls() {
+function audioControls(data, beat) {
+    console.log(data);
+    console.log(beat);
+    console.log(beat.audio);
+    const playBtn = document.querySelector('#play');
+    const prevBtn = document.querySelector('#prev');
+    const nextBtn = document.querySelector('#next');
+    const audio = document.querySelector('#audio');
+    const progress = document.querySelector('.progress');
+    const progressContainer = document.querySelector('progress-container');
+    let isPlaying = false;
 
+    audio.src = beat.audio;
+
+
+    function playSong() {
+        isPlaying = true;
+        playBtn.querySelector('i.fa-solid').classList.remove('fa-circle-play');
+        playBtn.querySelector('i.fa-solid').classList.add('fa-circle-pause');
+    
+        audio.play();
+    }
+    
+    function pauseSong() {
+        isPlaying = false;
+        playBtn.querySelector('i.fa-solid').classList.add('fa-circle-play');
+        playBtn.querySelector('i.fa-solid').classList.remove('fa-circle-pause');
+    
+        audio.pause();
+    }
+
+
+    playBtn.addEventListener('click', () => {
+        // if song is playing, pause it
+        if (isPlaying){
+            pauseSong();
+        } else {
+            playSong();
+        }
+    })
 }
+
