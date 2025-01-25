@@ -264,6 +264,13 @@ dialog[open] ~ body::before {
         margin-right: 15px;
     }
 
+    #contact-modal {
+        width: 80vw;
+        height: 10vh;
+    }
+
+    
+
     .beats{
         width: 90%;
         height: 100%;
