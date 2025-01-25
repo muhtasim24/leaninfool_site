@@ -154,7 +154,7 @@ dialog {
     left: 20px;
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
 }
 
@@ -191,14 +191,14 @@ dialog[open] ~ body::before {
 .action-btn {
     background-color: #fff;
     border: 0;
-    font-size: 20px;
+    font-size: 2rem;
     cursor: pointer;
-    padding:10px; 
-    margin: 0 20px;
+    padding: 10px; 
+    margin: 0 8px;
 }
 
 .action-btn-big {
-    font-size: 30px;
+    font-size: 3rem;
 }
 
 .action-btn:focus {
@@ -206,16 +206,16 @@ dialog[open] ~ body::before {
 }
 
 .progress-container {
-    background: black;
+    background: rgb(180, 180, 180);
     border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;
     height: 4px;
-    width: 100%;
+    width: 65%;
 }
 
 .progress{
-    background-color: black;
+    background-color: rgb(99, 98, 98);
     border-radius: 5px;
     height: 100%;
     width: 0%;

@@ -74,7 +74,7 @@ function modalControls(data, beat) {
     const nextBtn = document.querySelector('#next');
     const audio = document.querySelector('#audio');
     const progress = document.querySelector('.progress');
-    const progressContainer = document.querySelector('progress-container');
+    const progressContainer = document.querySelector('.progress-container');
     let isPlaying = false;
     let currentBeatIndex = beat.index;
 
@@ -111,8 +111,7 @@ function modalControls(data, beat) {
             currentBeatIndex = data.length - 1;
         }
 
-        loadBeat(data[currentBeatIndex])
-
+        loadBeat(data[currentBeatIndex]);
         playBeat();
     }
 
@@ -128,7 +127,17 @@ function modalControls(data, beat) {
     }
     
     function updateProgress(e) {
-        console.log(e.srcElement.currentTime);
+        const {duration, currentTime} = e.srcElement;
+        const progressPercent = (currentTime / duration) * 100
+        progress.style.width = `${progressPercent}%`
+    }
+
+    function setProgress(e){
+        const width = this.clientWidth
+        const clickX = e.offsetX
+        const duration = audio.duration;
+
+        audio.currentTime = (clickX / width) * duration;
     }
 
     playBtn.addEventListener('click', () => {
@@ -144,5 +153,7 @@ function modalControls(data, beat) {
     nextBtn.addEventListener('click', nextBeat);
 
     audio.addEventListener('timeupdate', updateProgress);
+
+    progressContainer.addEventListener('click', setProgress);
 }
 

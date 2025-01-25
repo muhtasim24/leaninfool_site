@@ -11,34 +11,34 @@
         "title": "Matcuz Hearts",
         "tag": "Trap",
         "audio": "/audio/mattcuz- heartz&chrom3.mp3",
-        "img": "/images/beat2.jpg"
+        "img": "/assets/leainfool-logo.png"
     },
     {
         "index": 2,
         "title": "Beat 3",
         "tag": "Trap",
         "audio": "/audio/beat2.mp3",
-        "img": "/images/beat2.jpg"
+        "img": "/assets/leainfool-logo.png"
     },
     {
         "index": 3,
         "title": "Beat 3",
         "tag": "Trap",
         "audio": "/audio/beat2.mp3",
-        "img": "/images/beat2.jpg"
+        "img": "/assets/leainfool-logo.png"
     },
     {
         "index": 4,
         "title": "Beat 3",
         "tag": "Trap",
         "audio": "/audio/beat2.mp3",
-        "img": "/images/beat2.jpg"
+        "img": "/assets/leainfool-logo.png"
     },
     {
         "index": 5,
         "title": "Leaninfool Beat 6",
         "tag": "#wavy #melodic",
         "audio": "/audio/beat1.mp3",
-        "img": "/images/beat1.jpg"
+        "img": "/assets/leainfool-logo.png"
     }
 ]
